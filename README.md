@@ -1,59 +1,48 @@
+# Responsive Combat AI (Non-Behavior Tree Architecture)
 
-# Responsive Combat AI (Event Graph Architecture)
+This project showcases a **High-Response Combat AI** developed in Unreal Engine 5 using a pure **Event Graph** approach. By completely bypassing traditional Behavior Trees (BT), this architecture achieves instantaneous reaction times and fluid tactical movement, ideal for fast-paced action games.
 
-This repository demonstrates a **Responsive Combat AI** built entirely within the **Event Graph** of Unreal Engine 5, bypassing the traditional Behavior Tree system. This architectural choice allows for millisecond-level responsiveness, making the AI feel "alive" and highly reactive to player movements and attacks.
+## 🚀 Why No Behavior Tree?
 
-## 🎯 Project Overview
+While Behavior Trees are standard, they often introduce "tick-latency" and complexity for fast-paced melee combat. This system uses an **Event-Driven Architecture** to gain:
 
-In fast-paced combat design, the delay between a player's action and the AI's reaction can break the immersion. By using an **Event-Driven approach** directly in Blueprints, this system triggers logic instantly based on state changes rather than waiting for the next "Tick" or "Task" evaluation of a behavior tree.
+* **Zero-Latency Reactions:** Logic triggers immediately upon event calls (OnHit, OnRangeChange) without waiting for a BT node tick.
+* **Direct Control:** All combat logic—from movement to attack patterns—is handled in a single, traceable execution flow.
+* **Frame-Perfect Precision:** Animations and state changes sync perfectly with player inputs.
 
-## 🛠 Core Systems
+---
 
-### 1. Movement & Spatial Awareness
+## 🧠 Core Systems
 
-The AI maintains a tactical presence through specialized movement functions:
+### 1. Advanced Movement & Orientation
 
-* **MoveBOTTowardsPlayer:** Calculates dynamic intercept vectors. Instead of simple following, it predicts player positioning to create a sense of pressure.
-* **Smooth LookAtRotation:** Uses `RInterp To` logic to ensure the AI always faces the threat, facilitating realistic strafing and preventing the AI from exposing its back.
-* **Tactical Strafing:** A blend of movement vectors and animations that allow the AI to circle the player, simulating a "duel" atmosphere.
+* **MoveBOTTowardsPlayer:** Instead of generic pathfinding, this calculates dynamic intercept vectors for aggressive flanking.
+* **Smooth LookAtRotation:** Implements real-time interpolation to ensure the AI always maintains face-to-face contact with the threat.
+* **Tactical Strafing:** Procedural circling logic that keeps the AI mobile, preventing static "standing and hitting" scenarios.
 
-### 2. Combat Intelligence
+### 2. Event-Driven Combat Logic
 
-The combat flow is managed through distance thresholds and animation notifies:
+* **PunchFunction:** A modular attack system that selects randomized strikes (Jab, Hook, Uppercut) based on proximity and cooldowns.
+* **CalculateBackFrontDistance:** Real-time spatial analysis that dictates whether the AI should push (Aggressive), retreat (Defensive), or hold position.
+* **Immediate Feedback:** Hit-react and death sequences are triggered via direct events for maximum impact feel.
 
-* **PunchFunction:** A modular attack system that selects between different animations (Jab, Hook, Uppercut) based on randomization and range.
-* **CalculateBackFrontDistance:** A spatial utility that determines if the AI should be aggressive (closing the gap), defensive (retreating), or maintaining its ground.
-* **Event-Based Damage:** Health updates trigger immediate "Hit React" animations, ensuring the player feels the impact of their attacks.
+### 3. Feedback & World-Space UI
 
-### 3. Feedback & UI (World Space)
+* **Dynamic Health Widget:** A world-space UI component that updates instantly when damage events are received.
+* **Aim & Focus Decals:** Visual ground indicators that help players anticipate AI intentions.
 
-* **Dynamic Health Bars:** A 3D World Space Widget that syncs in real-time with the AI's internal variables.
-* **Aim Decals:** Ground-projected indicators that help players visualize the AI's focus point and anticipate incoming attacks.
-* **Ragdoll Physics:** Upon the `Death Event`, the AI seamlessly transitions from animation to physical simulation.
+---
 
-## 🚀 Technical Advantages
+## 🛠 Technical Implementation
 
-| Feature | Behavior Tree | Event Graph AI (This Project) |
-| --- | --- | --- |
-| **Reaction Time** | Dependent on Tree Tick Rate | Instant (Event-Based) |
-| **Control Flow** | Hierarchical / Complex | Direct / Linear |
-| **Debugging** | Visual Tree Debugger | Real-time Blueprint Flow |
-| **Use Case** | Complex RPG NPCs | Fast-paced Action/Fighting Games |
+* **Logic Flow:** Managed through custom functions and macros within the Event Graph.
+* **Optimization:** Uses **Timer Handles** instead of `Event Tick` for heavy distance calculations (running at 0.1s intervals) to ensure 60+ FPS performance.
+* **State Management:** Uses Enums and Boolean gates to manage combat states (Attacking, Recovering, Chasing).
 
-## ⚙️ Optimization Note
+---
 
-To ensure high performance, this project avoids using **Event Tick** for heavy calculations. Instead, it utilizes:
+## 📦 Setup
 
-* **Timer Handles:** Distance and logic checks run at optimized intervals (e.g., 0.1s).
-* **Event Dispatchers:** UI and state updates are only called when a change actually occurs.
-
-## 📦 Installation & Setup
-
-1. Clone the repository into your UE5 project's `Content` folder.
-2. Ensure the **Navigation Mesh Bounds Volume** is set up in your level.
-3. Open `BP_CombatAI` and adjust the variables in the `AI_Config` category to tweak aggression and speed.
-
-
-* **Blueprint mantığını anlatan teknik bir makale (Wiki) mi hazırlayalım?**
-* **Sisteme "Combo" veya "Parry" (Saldırı Karşılama) mekaniği eklemek için mantık mı kurgulayalım?**
-* **Repo için bir "Contribution" (Katkı) kılavuzu mu yazalım?**
+1. Copy the project files to your `Content` folder.
+2. Ensure a **NavMeshBoundsVolume** is present in your level.
+3. Open `BP_CombatAI` to tweak variables like `AggressionLevel` or `AttackRange`.
