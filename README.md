@@ -1,46 +1,59 @@
-# ⚔️ Advanced Combat AI System - Unreal Engine 5
 
-This project is a high-performance, scalable, and tactile Enemy AI Framework built in **Unreal Engine 5**. It moves beyond simple "follow and attack" logic, utilizing professional tools like **Behavior Trees**, **Environment Query System (EQS)**, and **AI Perception** to create a challenging yet fair combat experience.
+# Responsive Combat AI (Event Graph Architecture)
 
-## 🚀 Key Features
+This repository demonstrates a **Responsive Combat AI** built entirely within the **Event Graph** of Unreal Engine 5, bypassing the traditional Behavior Tree system. This architectural choice allows for millisecond-level responsiveness, making the AI feel "alive" and highly reactive to player movements and attacks.
 
-### 🧠 Strategic Decision Making
-The AI's "brain" is built on a modular **Behavior Tree** architecture, allowing for seamless transitions between states based on real-time data stored in the **Blackboard**.
-* **Modular States:** Idle, Patrol, Investigate, and Combat.
-* **Asynchronous Logic:** Optimized to run complex decision-making processes without impacting frame rates.
+## 🎯 Project Overview
 
-### ⚔️ Tactical Combat & Pattern Analysis
-Combat is not randomized; it is based on **Pattern-based logic** to simulate a skilled opponent.
-* **Pattern-Based Attacks:** The AI analyzes player distance and health to execute specific combos and attack varieties.
-* **Adaptive Challenge:** Iterative balancing between "Challenge" and "Fairness" to ensure the AI punishes mistakes but remains fun to play against.
+In fast-paced combat design, the delay between a player's action and the AI's reaction can break the immersion. By using an **Event-Driven approach** directly in Blueprints, this system triggers logic instantly based on state changes rather than waiting for the next "Tick" or "Task" evaluation of a behavior tree.
 
-### 👁️ Vision-Based Detection (Perception)
-A realistic detection system using the **AI Perception Component**.
-* **Configurable FOV:** Fully adjustable field-of-view and detection range.
-* **Line-of-Sight (LOS) Validation:** Uses raycasting/traces to ensure the AI only reacts when the player is physically visible behind obstacles.
+## 🛠 Core Systems
 
-### 👂 Audio Perception System
-The AI reacts to world acoustics, adding a layer of stealth gameplay.
-* **Distance-Based Sound Detection:** AI detects footsteps, jumps, or combat noises.
-* **Suspicion Thresholds:** Different noise levels trigger different reactions, from a simple "look at" to a full investigation.
+### 1. Movement & Spatial Awareness
 
-### 🔍 Intelligent Investigation Mode
-When the player is lost, the AI doesn't just stop; it hunts.
-* **Last Known Position (LKP):** The AI remembers where it last saw the player.
-* **EQS Integration:** The AI queries the environment to scan potential hiding spots, corners, and cover points strategically.
+The AI maintains a tactical presence through specialized movement functions:
 
-## 🛠️ Technical Implementation
+* **MoveBOTTowardsPlayer:** Calculates dynamic intercept vectors. Instead of simple following, it predicts player positioning to create a sense of pressure.
+* **Smooth LookAtRotation:** Uses `RInterp To` logic to ensure the AI always faces the threat, facilitating realistic strafing and preventing the AI from exposing its back.
+* **Tactical Strafing:** A blend of movement vectors and animations that allow the AI to circle the player, simulating a "duel" atmosphere.
 
-* **Engine:** Unreal Engine 5
-* **Logic:** Behavior Trees, Blackboard, EQS (Environment Query System).
-* **Senses:** AI Perception (Sight & Hearing).
-* **Navigation:** NavMesh Bounds with Dynamic Modifiers.
+### 2. Combat Intelligence
 
-## 📝 Usage
-1. Clone the repository.
-2. Open in Unreal Engine 5.
-3. Check the `AI` folder for Behavior Tree and Blackboard assets.
-4. Place the `BP_Enemy` actor in your scene with a `NavMeshBoundsVolume`.
+The combat flow is managed through distance thresholds and animation notifies:
 
----
-*Developed as a technical showcase of advanced AI systems in Unreal Engine 5.*
+* **PunchFunction:** A modular attack system that selects between different animations (Jab, Hook, Uppercut) based on randomization and range.
+* **CalculateBackFrontDistance:** A spatial utility that determines if the AI should be aggressive (closing the gap), defensive (retreating), or maintaining its ground.
+* **Event-Based Damage:** Health updates trigger immediate "Hit React" animations, ensuring the player feels the impact of their attacks.
+
+### 3. Feedback & UI (World Space)
+
+* **Dynamic Health Bars:** A 3D World Space Widget that syncs in real-time with the AI's internal variables.
+* **Aim Decals:** Ground-projected indicators that help players visualize the AI's focus point and anticipate incoming attacks.
+* **Ragdoll Physics:** Upon the `Death Event`, the AI seamlessly transitions from animation to physical simulation.
+
+## 🚀 Technical Advantages
+
+| Feature | Behavior Tree | Event Graph AI (This Project) |
+| --- | --- | --- |
+| **Reaction Time** | Dependent on Tree Tick Rate | Instant (Event-Based) |
+| **Control Flow** | Hierarchical / Complex | Direct / Linear |
+| **Debugging** | Visual Tree Debugger | Real-time Blueprint Flow |
+| **Use Case** | Complex RPG NPCs | Fast-paced Action/Fighting Games |
+
+## ⚙️ Optimization Note
+
+To ensure high performance, this project avoids using **Event Tick** for heavy calculations. Instead, it utilizes:
+
+* **Timer Handles:** Distance and logic checks run at optimized intervals (e.g., 0.1s).
+* **Event Dispatchers:** UI and state updates are only called when a change actually occurs.
+
+## 📦 Installation & Setup
+
+1. Clone the repository into your UE5 project's `Content` folder.
+2. Ensure the **Navigation Mesh Bounds Volume** is set up in your level.
+3. Open `BP_CombatAI` and adjust the variables in the `AI_Config` category to tweak aggression and speed.
+
+
+* **Blueprint mantığını anlatan teknik bir makale (Wiki) mi hazırlayalım?**
+* **Sisteme "Combo" veya "Parry" (Saldırı Karşılama) mekaniği eklemek için mantık mı kurgulayalım?**
+* **Repo için bir "Contribution" (Katkı) kılavuzu mu yazalım?**
