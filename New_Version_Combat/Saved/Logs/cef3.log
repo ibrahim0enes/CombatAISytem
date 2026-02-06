@@ -1,0 +1,18 @@
+[8608:15340:0206/190452.155:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[8608:3372:0206/190452.337:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
+[8608:15340:0206/190452.366:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[8608:15340:0206/190502.172:WARNING:external_registry_loader_win.cc(232)] Error observing HKLM: 5
+[8608:15340:0206/190502.945:ERROR:device_event_log_impl.cc(196)] [19:05:02.848] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Eleman bulunamadı. (0x490)
+[16708:21680:0206/190504.315:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-591935187C5E6148DC6CF9C48A5B2245 will be ignored
+[6680:4984:0206/190505.990:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 6-8AFEFE484215BFAD6334A9B5F8948798 will be ignored
+[15440:14396:0206/190506.331:ERROR:shared_image_manager.cc(224)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[18024:24920:0207/003712.751:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -101
+[8608:3216:0207/003724.526:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for o10593.ingest.us.sentry.io failed:
+----- Certificate i=0 (emailAddress=root@localhost.localdomain,CN=localhost.localdomain,OU=IT,O=MyCompany,L=Seattle,ST=WA,C=US) -----
+ERROR: No matching issuer found
+
+
+[18024:24920:0207/003724.543:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -202
+[18024:24920:0207/003739.645:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -101
+[18024:24920:0207/004510.600:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -101
+[8608:15340:0207/004715.663:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

@@ -1,0 +1,30 @@
+[27276:20724:0206/143550.033:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[27276:15244:0206/143550.408:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
+[27276:20724:0206/143550.627:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[27276:20724:0206/143600.254:WARNING:external_registry_loader_win.cc(232)] Error observing HKLM: 5
+[27276:20724:0206/143602.265:ERROR:device_event_log_impl.cc(196)] [14:36:01.936] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Eleman bulunamadı. (0x490)
+[23888:15072:0206/143602.932:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-01CBA6E436FBBE1616A32DDB17E5E921 will be ignored
+[27276:9392:0206/143605.600:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[27276:20724:0206/143609.246:WARNING:browser_info.cc(345)] Returning a speculative frame for [11,9]
+[27276:20724:0206/143609.246:WARNING:browser_info.cc(345)] Returning a speculative frame for [11,9]
+[27276:20724:0206/143609.246:WARNING:browser_info.cc(345)] Returning a speculative frame for [11,9]
+[27276:20724:0206/143609.246:WARNING:browser_info.cc(345)] Returning a speculative frame for [11,9]
+[27276:9392:0206/143609.255:WARNING:browser_info.cc(345)] Returning a speculative frame for [11,9]
+[27748:26260:0206/143609.855:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 6-038F9AE63A504EE778E702F594693C2D will be ignored
+[14120:27092:0206/143609.921:ERROR:shared_image_manager.cc(224)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[27276:15244:0206/143612.427:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for o10593.ingest.us.sentry.io failed:
+----- Certificate i=0 (emailAddress=root@localhost.localdomain,CN=localhost.localdomain,OU=IT,O=MyCompany,L=Seattle,ST=WA,C=US) -----
+ERROR: No matching issuer found
+
+
+[16476:23916:0206/143612.444:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -202
+[14120:27092:0206/143817.141:ERROR:shared_image_manager.cc(224)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[27276:15244:0206/152122.701:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for o10593.ingest.us.sentry.io failed:
+----- Certificate i=0 (emailAddress=root@localhost.localdomain,CN=localhost.localdomain,OU=IT,O=MyCompany,L=Seattle,ST=WA,C=US) -----
+ERROR: No matching issuer found
+
+
+[16476:23916:0206/152122.718:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -202
+[16476:23916:0206/152259.916:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -101
+[16476:23916:0206/152319.309:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -101
+[27276:20724:0206/152930.041:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
